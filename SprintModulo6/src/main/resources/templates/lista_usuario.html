@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	th:href="@{https://use.fontawesome.com/releases/v5.4.1/css/all.css}">
+<title>Listado de Capacitaciones</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-info">
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+				aria-controls="navbarTogglerDemo03" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" th:href="@{/}">Seguridad Integral</a>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+		
+					</li>
+				</ul>
+				<form class="d-flex">
+					  
+					<a th:href="@{/logout}" class="btn btn-light">Salir</a>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<div class="container">
+		<div class="row">
+			<h1>Lista Usuarios</h1>
+		</div>
+		<br>
+		<table class="table table-striped ">
+			<thead class="table-dark">
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Email</th>
+					<th>Estado</th>
+					<th>Perfil Tipo</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="tempUsu: ${usuarios}">
+					<td th:text="${tempUsu.id}"></td>
+					<td th:text="${tempUsu.nombre}"></td>
+					<td th:text="${tempUsu.username}"></td>
+					<td th:text="${tempUsu.password}"></td>
+					<td th:text="${tempUsu.email}"></td>
+					<td th:text="${tempUsu.estado}"></td>
+					<td th:text="${tempUsu.perfiles}"></td>
+					<td><a th:href="@{/usuarios/edit/{id}(id=${tempUsu.id})}"
+						class="btn  btn-primary"><i class="fas fa-user-times ml-2"></i></a>
+					</td>
+					<!-- Eliminar usuario
+						<td><a th:href="@{/usuarios/{id}(id=${tempUsu.id})}"
+						class="btn  btn-danger"><i class="fas fa-user-times ml-2"></i></a>
+
+					</td>-->
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+	
+</body>
+</html>
